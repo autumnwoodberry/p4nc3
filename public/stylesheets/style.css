@@ -26,32 +26,40 @@ main {
   margin: 0 auto;
 }
 nav {
+  width: 100%;
+  margin-top: 0.5em;
+  position: relative;
+  bottom: 0;
   text-align: center;
+  -webkit-box-shadow: 0px 1px 2px #bbb;
+  box-shadow: 0px 1px 2px #bbb;
+  -webkit-border-radius: 0.5em;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+  overflow: hidden;
 }
 nav button {
   background: #fff;
   border: none;
   width: 100%;
-  -webkit-border-radius: 0.5em;
-  border-radius: 0.5em;
-  -webkit-box-shadow: 0px 1px 2px #bbb;
-  box-shadow: 0px 1px 2px #bbb;
-  margin-bottom: 0.5em;
   width: 50%;
+  height: 50px;
 }
 nav button:active {
   background: #eee;
 }
 nav #next {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
+  border-left: 1px solid #ddd;
 }
-nav #previous {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+.meta {
+  font-size: 11px;
+  text-transform: lowercase;
+  text-align: center;
 }
 .card {
   position: relative;
+  height: 300px;
+  cursor: pointer;
 }
 .front,
 .back {
@@ -60,7 +68,7 @@ nav #previous {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 300px;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
   -ms-backface-visibility: hidden;
@@ -70,16 +78,16 @@ nav #previous {
   -o-transition: -o-transform 0.3s;
   -ms-transition: -ms-transform 0.3s;
   transition: transform 0.3s;
-}
-.front p,
-.back p {
-  padding: 0.75em;
-  margin: 0;
   background: #fff;
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
   -webkit-box-shadow: 0px 1px 2px #bbb;
   box-shadow: 0px 1px 2px #bbb;
+}
+.front p,
+.back p {
+  padding: 0.75em;
+  margin: 0;
   text-align: center;
 }
 .back {
@@ -89,14 +97,14 @@ nav #previous {
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-.card:hover .front {
+.card.flip .front {
   -webkit-transform: rotateY(-180deg);
   -moz-transform: rotateY(-180deg);
   -o-transform: rotateY(-180deg);
   -ms-transform: rotateY(-180deg);
   transform: rotateY(-180deg);
 }
-.card:hover .back {
+.card.flip .back {
   -webkit-transform: rotateY(0);
   -moz-transform: rotateY(0);
   -o-transform: rotateY(0);
