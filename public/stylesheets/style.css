@@ -23,6 +23,7 @@ main {
   padding: 0.5em;
 }
 .content {
+  max-width: 450px;
   margin: 0 auto;
 }
 nav button,

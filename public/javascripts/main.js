@@ -28,7 +28,7 @@ $.getJSON('/json/cards.json', function(data){
     }
   })
   $.each(categories, function(i, category){
-    $('.options').append('<button class="check"><i class="fa fa-check"></i>' + category.toLowerCase() + '</button>')
+    $('.options').append('<button class="check" value="' + category + '"><i class="fa fa-check"></i>' + category.toLowerCase() + '</button>')
   })
   $('.options button').each(function(i, option){
     $(this).click(function(){
@@ -44,26 +44,30 @@ $.getJSON('/json/cards.json', function(data){
   })
 
   var cards = TAFFY(data)
-
+  var checked = []
   writeCards(current)
 
-  $('#next').click(function(){
-    current += 1
-    if (current > cards().count()-1) {
-      current = 0
-    }
-    writeCards(current)
-  })
-
   $('#random').click(function(){
-    current = Math.floor(Math.random() * cards().count())
+    checked = []
+    $('.options button').each(function(i, button){
+      if ($(this).hasClass('check')){
+        checked.push({category: button.value})
+      }
+    })
+    current = Math.floor(Math.random() * cards(checked).count())
     writeCards(current)
   })
 
   function writeCards(index){
-    $('.front p').html(cards().get()[index].front)
-    $('.back p').html(cards().get()[index].back)
-    $('.meta').html(index+1+' / '+cards().count()+' - [ '+cards().get()[index].category+' ]')
+    checked = []
+    $('.options button').each(function(i, button){
+      if ($(this).hasClass('check')){
+        checked.push({category: button.value})
+      }
+    })
+    $('.front p').html(cards(checked).get()[index].front)
+    $('.back p').html(cards(checked).get()[index].back)
+    $('.meta').html(index+1+' / '+cards().count(checked)+' - [ '+cards(checked).get()[index].category+' ]')
   }
 
   $('.flip').click(function(){
