@@ -21,6 +21,28 @@ var current = 0
 
 $.getJSON('/json/cards.json', function(data){
 
+  var categories = []
+  $.each(data, function(i, card){
+    if (categories.indexOf(card.category) < 0){
+      categories.push(card.category)
+    }
+  })
+  $.each(categories, function(i, category){
+    $('.options').append('<button class="check"><i class="fa fa-check"></i>' + category.toLowerCase() + '</button>')
+  })
+  $('.options button').each(function(i, option){
+    $(this).click(function(){
+      $(this).toggleClass('check')
+      if ($(this).children().hasClass('fa-check')){
+        $(this).children().removeClass('fa-check')
+        $(this).children().addClass('fa-times')
+      } else {
+        $(this).children().addClass('fa-check')
+        $(this).children().removeClass('fa-times')
+      }
+    })
+  })
+
   var cards = TAFFY(data)
 
   writeCards(current)
@@ -44,9 +66,9 @@ $.getJSON('/json/cards.json', function(data){
     $('.meta').html(index+1+' / '+cards().count()+' - [ '+cards().get()[index].category+' ]')
   }
 
-  $('.front, .back').click(function(){
+  $('.flip').click(function(){
     console.log('flip!')
-    $('.card').toggleClass('flip')
+    $('.flip').toggleClass('hover')
   })
 
 })

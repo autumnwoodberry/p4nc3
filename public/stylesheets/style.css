@@ -1,5 +1,6 @@
 @import 'normalize.css';
 @import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800");
+@import url("http://fonts.googleapis.com/css?family=Coming+Soon");
 html,
 body {
   height: 100%;
@@ -22,62 +23,58 @@ main {
   padding: 0.5em;
 }
 .content {
-  max-width: 400px;
   margin: 0 auto;
 }
-nav {
-  width: 100%;
-  margin-top: 0.5em;
-  position: relative;
-  bottom: 0;
-  text-align: center;
+nav button,
+.options button {
   -webkit-box-shadow: 0px 1px 2px #bbb;
   box-shadow: 0px 1px 2px #bbb;
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
-  margin-bottom: 0.5em;
-  overflow: hidden;
-}
-nav button {
   background: #fff;
   border: none;
-  width: 100%;
-  width: 50%;
   height: 50px;
+  margin-top: 0.5em;
 }
-nav button:active {
+nav button:active,
+.options button:active {
   background: #eee;
 }
-nav #next {
-  border-left: 1px solid #ddd;
+nav button {
+  width: 100%;
+}
+.options {
+  text-align: center;
+}
+.options button {
+  color: #ccc;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: left;
+}
+.options button + button {
+  margin-left: 0.5em;
+}
+.options button i {
+  margin-right: 1em;
+}
+.options button .fa-times {
+  color: #ccc;
+}
+.options button .fa-check {
+  color: #0c6;
+}
+.options button.check {
+  color: #333;
 }
 .meta {
   font-size: 11px;
   text-transform: lowercase;
   text-align: center;
 }
-.card {
-  position: relative;
-  height: 300px;
-  cursor: pointer;
-}
 .front,
 .back {
   font-size: 1.5em;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 300px;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -ms-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transition: -webkit-transform 0.3s;
-  -moz-transition: -moz-transform 0.3s;
-  -o-transition: -o-transform 0.3s;
-  -ms-transition: -ms-transform 0.3s;
-  transition: transform 0.3s;
   background: #fff;
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
@@ -89,25 +86,70 @@ nav #next {
   padding: 0.75em;
   margin: 0;
   text-align: center;
+  font-family: Coming Soon;
+}
+.flip {
+  -webkit-perspective: 1000;
+  -moz-perspective: 1000;
+  -ms-perspective: 1000;
+  perspective: 1000;
+}
+.flip.hover .card {
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}
+.flip,
+.front,
+.back {
+  width: 100%;
+  height: 300px;
+}
+.card {
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  -o-transition: 0.6s;
+  -ms-transition: 0.6s;
+  transition: 0.6s;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: relative;
+  cursor: pointer;
+}
+.front,
+.back {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.front {
+  z-index: 2;
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }
 .back {
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  -o-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
-.card.flip .front {
-  -webkit-transform: rotateY(-180deg);
-  -moz-transform: rotateY(-180deg);
-  -o-transform: rotateY(-180deg);
-  -ms-transform: rotateY(-180deg);
-  transform: rotateY(-180deg);
+.fa.fa-bars {
+  float: right;
+  cursor: pointer;
 }
-.card.flip .back {
-  -webkit-transform: rotateY(0);
-  -moz-transform: rotateY(0);
-  -o-transform: rotateY(0);
-  -ms-transform: rotateY(0);
-  transform: rotateY(0);
+.settings-menu {
+  display: none;
 }
