@@ -4,4 +4,6 @@ A simple application that displays "flash cards" to aid in studying for the [Phy
 
 Requested by students at an anonymous university in Chicago.
 
+Notes: this has some very bad stuff in it that needs to be fixed. checking for selected buttons is terrible, making way too many database calls for my liking, etc. It works though.
+
 
